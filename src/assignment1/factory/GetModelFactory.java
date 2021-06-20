@@ -11,7 +11,7 @@ import assignment1.models.RawModel;
 
 public class GetModelFactory {
 
-  public static ItemModel getModel(String type) {
+  public static ItemModel getModel(final String type) {
     if (type == null) {
       return null;
     }

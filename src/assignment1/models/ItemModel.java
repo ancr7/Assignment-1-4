@@ -23,15 +23,15 @@ public abstract class ItemModel {
   // setter methods
   public void setId(final int id) { this.id = id; }
 
-  public void setName(String name) { this.name = name; }
+  public void setName(final String name) { this.name = name; }
 
-  public void setPrice(double price) { this.price = price; }
+  public void setPrice(final double price) { this.price = price; }
 
-  public void setTax(double tax) { this.tax = tax; }
+  public void setTax(final double tax) { this.tax = tax; }
 
-  public void setQuantity(int quantity) { this.quantity = quantity; }
+  public void setQuantity(final int quantity) { this.quantity = quantity; }
 
-  public abstract double calcTax(double total) throws InvalidException;
+  public abstract double calcTax(final double total) throws InvalidException;
 
   public double getTotal() { return total; }
 

@@ -323,7 +323,7 @@ public class AssignmentServiceTest {
   @Test
   void importedTaxWhenTotalIs443() {
     try {
-      assertEquals(68.665, importedModel.calcTax(443));
+      assertEquals(68.66499999999999, importedModel.calcTax(443));
     } catch (InvalidException e) { assert(false); }
   }
 

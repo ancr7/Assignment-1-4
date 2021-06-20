@@ -12,7 +12,7 @@ public class AssignmentService {
   public AssignmentService() {}
 
 
-  public ItemModel processInput(String inputString) throws InvalidException {
+  public ItemModel processInput(final String inputString) throws InvalidException {
 
     // 1. validate input
     ValidatorUtil.isValidFormat(inputString);
