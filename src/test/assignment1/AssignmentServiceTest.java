@@ -43,7 +43,6 @@ public class AssignmentServiceTest {
     String actualMessage = exception.getMessage();
 
     assertTrue(actualMessage.contains(expectedMessage));
-//    assertEquals(false, assignmentService.processInput(""));
   }
 
   @Test
