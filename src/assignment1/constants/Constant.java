@@ -6,6 +6,7 @@ public class Constant {
   public final static String IMPORTED = "IMPORTED";
   public final static String MANUFACTURED = "MANUFACTURED";
   public final static char DELIMETER = '-';
+  public final static String COLON = ": ";
   public final static String SPACE = " ";
   public final static String FORMAT = "format";
   public final static String INVALID = "Invalid";
@@ -33,4 +34,5 @@ public class Constant {
   public final static String NUMBER_REGEX = "[0-9]*";
   public final static String ENTER_NAME_IN_GIVEN_FORMAT = "Enter Input in given format:";
   public final static String NAME_FORMAT = "-name {name} ";
+  public final static String DATA_INVALID ="Data Invalid!";
 }

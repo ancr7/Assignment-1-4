@@ -1,5 +1,6 @@
-package assignment4;
+package assignment4.repo;
 
+import assignment4.dbConnection.DBConnect;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -8,16 +9,16 @@ public class Repo {
 
   private Statement statement;
 
-  Repo() throws Exception{
+  public Repo() throws Exception{
       Connection connection = DBConnect.getInstance().getConnection();
       statement = connection.createStatement();
   }
 
-  public ResultSet readDatabase(String query) throws Exception {
+  public ResultSet readDatabase(final String query) throws Exception {
       return statement.executeQuery(query);
   }
 
-  public void writeDatabase(String query)  throws Exception{
+  public void writeDatabase(final String query)  throws Exception{
       statement.executeUpdate(query);
   }
 }

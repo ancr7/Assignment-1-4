@@ -1,6 +1,7 @@
-package assignment4;
+package assignment4.service;
 
 import assignment1.models.ItemModel;
+import assignment4.repo.Repo;
 
 public class WriteServiceImpl implements DBService, Runnable {
 
@@ -9,12 +10,12 @@ public class WriteServiceImpl implements DBService, Runnable {
   static boolean alive = false;
   private Repo repo;
 
-  public WriteServiceImpl()  throws Exception{
+  public WriteServiceImpl() throws Exception {
     writeThread = null;
     repo = new Repo();
   }
 
-  static boolean isAlive() {
+  public static boolean isAlive() {
     return alive;
   }
 

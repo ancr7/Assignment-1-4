@@ -18,7 +18,6 @@ public class AssignmentController {
     inputString = inputString.trim();
 
     // 2. call service method to process the input (service.processInput();)
-//    ItemModel model = new ItemModel();
     final AssignmentService service = new AssignmentService();
     try {
       ItemModel model = service.processInput(inputString);

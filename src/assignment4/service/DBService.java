@@ -1,4 +1,4 @@
-package assignment4;
+package assignment4.service;
 
 import assignment1.models.ItemModel;
 import java.util.LinkedList;

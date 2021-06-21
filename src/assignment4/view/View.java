@@ -1,17 +1,25 @@
-package assignment4;
+package assignment4.view;
 
+import assignment1.constants.Constant;
+import assignment4.repo.Repo;
+import assignment4.service.WriteServiceImpl;
 import java.sql.ResultSet;
 
 public class View implements Runnable {
 
   private Thread readThread;
   private ResultSet dbsnapshot;
+
   private final String dbName = "ItemTable";
   private final String query = "select * from ItemTable,TaxTable where ItemTable.id = TaxTable.id";
-  static boolean alive = false;
-  private Repo repo;
+  private final String seperator =
+      "-----------------------------------------------------------------";
 
-  View()  throws Exception {
+
+  static boolean alive = false;
+  private final Repo repo;
+
+  public View() throws Exception {
     readThread = null;
     repo = new Repo();
   }
@@ -27,15 +35,18 @@ public class View implements Runnable {
       while (WriteServiceImpl.isAlive()) {
         Thread.sleep(500);
       }
+
       dbsnapshot = repo.readDatabase(query);
       while (dbsnapshot.next()) {
-        System.out.println("-----------------------------------------------------------------");
+//        System.out.println(seperator);
         String queryOutput =
-            "name: " + dbsnapshot.getString("name") + " type: " + dbsnapshot.getString("type")
-                + " price: " + dbsnapshot.getString("price") + " quantity: " + dbsnapshot
-                .getString("quantity");
-        System.out.println(queryOutput);
-        System.out.println("-----------------------------------------------------------------");
+            Constant.NAME + Constant.COLON + dbsnapshot.getString(Constant.NAME) + Constant.SPACE
+                + Constant.TYPE + Constant.COLON + dbsnapshot.getString(Constant.TYPE)
+                + Constant.SPACE + Constant.PRICE + Constant.COLON + dbsnapshot
+                .getString(Constant.PRICE) + Constant.SPACE + Constant.QUANTITY + Constant.COLON
+                + dbsnapshot.getString(Constant.QUANTITY);
+//        System.out.println(queryOutput);
+//        System.out.println(seperator);
         Thread.sleep(500);
       }
       alive = false;

@@ -1,17 +1,19 @@
-package assignment4;
+package assignment4.service;
 
+import assignment1.constants.Constant;
 import assignment1.models.ItemModel;
 import assignment1.services.AssignmentService;
+import assignment4.repo.Repo;
 import java.sql.ResultSet;
 
-class ReadServiceImpl implements DBService, Runnable {
+public class ReadServiceImpl implements DBService, Runnable {
 
   private Thread readThread;
   private final ResultSet dbSnapshot;
   private final String dbName = "ItemTable";
   static boolean alive = false;
 
-  ReadServiceImpl()  throws Exception{
+  public ReadServiceImpl() throws Exception {
     readThread = null;
     String query = "select * from " + dbName;
     this.dbSnapshot = new Repo().readDatabase(query);
@@ -26,14 +28,14 @@ class ReadServiceImpl implements DBService, Runnable {
     System.out.println(dbName);
     try {
       while (dbSnapshot.next()) {
-        String queryInput =
-            "-name " + dbSnapshot.getString("name") + " -type " + dbSnapshot.getString("type")
-                + " -price " + dbSnapshot.getString("price") + " -quantity " + dbSnapshot
-                .getString("quantity");
-
+        String queryInput = Constant.DELIMETER + Constant.NAME + Constant.SPACE + dbSnapshot
+            .getString(Constant.NAME) + Constant.SPACE + Constant.DELIMETER + Constant.TYPE
+            + Constant.SPACE + dbSnapshot.getString(Constant.TYPE) + Constant.SPACE
+            + Constant.DELIMETER + Constant.PRICE + Constant.SPACE + dbSnapshot
+            .getString(Constant.PRICE) + Constant.SPACE + Constant.DELIMETER + Constant.QUANTITY
+            + Constant.SPACE + dbSnapshot.getString(Constant.QUANTITY);
 
         AssignmentService assignmentService = new AssignmentService();
-
 
         ItemModel model = assignmentService.processInput(queryInput);
         model.setId(Integer.parseInt(dbSnapshot.getString("id")));
@@ -42,7 +44,7 @@ class ReadServiceImpl implements DBService, Runnable {
           System.out.println("DB Read " + model.getName());
           data.add(model);
         } else {
-          System.out.println("Data Invalid!");
+          System.out.println(Constant.DATA_INVALID);
         }
         Thread.sleep(1);
       }

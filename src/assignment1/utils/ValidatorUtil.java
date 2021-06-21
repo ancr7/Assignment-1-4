@@ -47,7 +47,6 @@ public class ValidatorUtil {
           Constant.INVALID + Constant.SPACE + Constant.DELIMETER + Constant.NAME);
     }
   }
-
   // validate input method
   public static void isInputValid(final String name, final String quantity, final String price,
                                   final String type) throws InvalidException {
